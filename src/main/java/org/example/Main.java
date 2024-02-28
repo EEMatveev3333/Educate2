@@ -9,6 +9,12 @@ public class Main {
         System.out.println("Hello and welcome!");
         Account acc1 = new Account("Ivanov Ivan Ivanovich");
         System.out.println(acc1);
+        acc1.setOwnerName("Ivanov1 Ivan1 Ivanovich1");
+        System.out.println(acc1);
+        acc1.undo();
+        System.out.println(acc1);
+//        acc1.undo();
+//        System.out.println(acc1);
         Account acc2 = new Account("Petrov Petr Petrovich");
         System.out.println(acc2);
         Account acc3 = new Account("Sidorov Sidor Sidorovich");
@@ -16,9 +22,21 @@ public class Main {
 
         System.out.println("Hello and welcome!");
 
+        acc1.setOwnerName("Ivanov1 Ivan1 Ivanovich1");
+        System.out.println(acc1);
         acc1.setCurrencySaldoPair("RUB",100);
         acc1.setCurrencySaldoPair("USD",100);
         acc1.setCurrencySaldoPair("EUR",100);
+        System.out.println(acc1);
+        acc1.undo();
+        System.out.println(acc1);
+        acc1.undo();
+        System.out.println(acc1);
+        acc1.undo();
+        System.out.println(acc1);
+        acc1.undo();
+        System.out.println(acc1);
+
         System.out.println(acc1);
         acc2.setCurrencySaldoPair("RUB",200);
         System.out.println(acc2);

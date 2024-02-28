@@ -1,7 +1,8 @@
 package org.example;
 
 import org.junit.jupiter.api.Test;
-
+import org.junit.jupiter.api.DisplayName;
+import org.example.Account;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AccountUndo {
@@ -31,21 +32,21 @@ class AccountUndo {
     void testUndoCurrencyChange() {
         Account account = new Account("TOLI");
         System.out.println("После создания счета " +account.toString());
-        account.setCurrencyAmount(Currency.RUB, 200);
+        account.setCurrencySaldoPair( "RUB", 200);
         System.out.println("счет до отката  " +account.toString());  // должны быть рубли
-        account.setCurrencyAmount(Currency.USD, 100);
+        account.setCurrencySaldoPair( "USD", 100);
         System.out.println("счет до отката  " +account.toString());  //должны быть доллары и рубли
-        account.setCurrencyAmount(Currency.USD, 1000);  // меняем 100 доларов на 1000
+        account.setCurrencySaldoPair( "USD", 1000);  // меняем 100 доларов на 1000
         System.out.println("счет после того как 100 доларов заменили на 1000 " +account.toString());  //  должны остаться только рубли
         assertTrue(account.canUndo());
         account.undo();   // откатываем 1000 доллары
         System.out.println("счет после отката 1000 долларов  должно остатся 100 доларов " +account.toString());  //  должны остаться только рубли
         account.undo();   // откатываем 100 доллары
         System.out.println("счет после отката долларов должны остатся только рубли  " +account.toString());  //  должны остаться только рубли
-        assertFalse(account.getCurrencyMap().containsKey(Currency.USD));    //проверяем что долларов нет
+        assertFalse(account.containsKeyCurr( "USD"));    //проверяем что долларов нет
         account.undo();     //  откат рублей
         System.out.println("счет после отката рублей " +account.toString());  // должен быть голый счет т.е без валюты
-        assertFalse(account.getCurrencyMap().containsKey(Currency.RUB));    //откат  долларов выполнен
+        assertFalse(account.containsKeyCurr( "RUB"));    //откат  долларов выполнен
         assertTrue(account.canUndo());  //остался голый счет
 
     }
@@ -55,7 +56,7 @@ class AccountUndo {
     void testMultipleUndo() {
         Account account = new Account("TOLI");
         account.setOwnerName("ANATOLI");
-        account.setCurrencyAmount(Currency.RUB, 100);
+        account.setCurrencySaldoPair( "RUB", 100);
         assertTrue(account.canUndo());
         account.undo(); // откатываем валюту
         System.out.println("счет после отката валюты  " +account.toString());  // должен быть голый счет

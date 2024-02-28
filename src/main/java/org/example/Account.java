@@ -48,9 +48,28 @@ public class Account {
         return currencySaldoTextList;
     }
     //-------------------------------------------------------------------
+    public boolean containsKeyCurr(String Currency){
+        if (this.currencySaldoTextList.contains("["+ Currency + "]"))
+            return true;
+        else
+            return false;
+    }
+
+    public Integer getCurrencySaldo(String Currency){
+
+        if (this.currencySaldoTextList.contains("["+ Currency + "]")) {
+            String tmp_currencySaldoTextList = this.currencySaldoTextList.substring
+                    (this.currencySaldoTextList.indexOf("[" + Currency + "]")  + Currency.length() + 2
+                            , this.currencySaldoTextList.indexOf("[/" + Currency + "]")
+                    );
+            return Integer.parseInt(tmp_currencySaldoTextList);
+        }
+        else
+            return 0;
+    }
 
     //6. Необходим метод, который принимает Валюту и её количество и заменяет текущее количество данной Валюты на указанное. Если такой валюты ранее не было – она добавляется в список.
-    public void setCurrencySaldoPair(String Currency, int Saldo) throws IllegalArgumentException   {
+    public void setCurrencySaldoPair(String Currency, Integer Saldo) throws IllegalArgumentException   {
         //        — Количество валюты не может быть отрицательным
         if (Saldo < 0)
             throw new IllegalArgumentException("Saldo cannot be negative");
@@ -108,6 +127,10 @@ public class Account {
 //
     private Deque<String> deque = new ArrayDeque<>();
 
+    public boolean canUndo() {
+        return !deque.isEmpty();
+    }
+
     //public Deque<String> getDeque() {
     public void undo() throws NoSuchElementException{
         if (this.deque.isEmpty())
@@ -147,6 +170,34 @@ public class Account {
 
     //    Часть 3. Сохранение
 //    Необходимо реализовать возможность получать Сохранения у объектов класса Account. Требования включают:
+    public static final class AccountStateSavings {
+        //private final @Getter String ownerName;
+        //private final Map<Currency, Integer> currencyMap;
+        private final String ownerName;
+        private final String currencySaldoTextList;
+
+        public AccountStateSavings(String ownerName, String currencySaldoTextList) {
+            this.ownerName = ownerName;
+            this.currencySaldoTextList = currencySaldoTextList;
+        }
+
+        public Integer getCurrencySaldo(String Currency){
+
+            if (this.currencySaldoTextList.contains("["+ Currency + "]")) {
+                String tmp_currencySaldoTextList = this.currencySaldoTextList.substring
+                        (this.currencySaldoTextList.indexOf("[" + Currency + "]")  + Currency.length() + 2
+                                , this.currencySaldoTextList.indexOf("[/" + Currency + "]")
+                        );
+                return Integer.parseInt(tmp_currencySaldoTextList);
+            }
+            else
+                return 0;
+        }
+
+        public String getOwnerName() {
+            return ownerName;
+        }
+    }
 
     public AccountStateSavings SaveState(){
         AccountStateSavings ret = new AccountStateSavings(this.ownerName,this.currencySaldoTextList);

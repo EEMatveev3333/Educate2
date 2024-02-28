@@ -26,38 +26,45 @@ public class Main {
         System.out.println(acc2);
         acc2.setCurrencySaldoPair("RUB",8888);
         System.out.println(acc2);
+        acc2.setCurrencySaldoPair("EUR",99999);
+        System.out.println(acc2);
         acc3.setCurrencySaldoPair("RUB",300);
         System.out.println(acc3);
 
-        String s = "[RUB]200[/RUB]";
-        String Currency = "RUB";
-        int Saldo = 8888;
-        System.out.println(s);
-        s =
-                s.replaceAll(
-                        s.substring
-                                (s.indexOf("["+ Currency + "]")  //Currency.length() + 1
-                                        , s.indexOf("[/"+ Currency + "]")
-                                )
-                        //"["+ Currency + "]" + Saldo + "[/"+ Currency + "]"
-                        ,"["+ Currency + "]" + Saldo// + "[/"+ Currency + "]"
-                );
-        System.out.println(s);
-        System.out.println("["+ Currency + "]" + Saldo);
-        System.out.println(s.substring
-                (s.indexOf("["+ Currency + "]")  //Currency.length() + 1
-                        , s.indexOf("[/"+ Currency + "]")
-                ));
-        System.out.println(s.indexOf("["+ Currency + "]"));
-        System.out.println(s.indexOf("[/"+ Currency + "]"));
-        System.out.println(                s.replaceAll(
-                s.substring
-                        (s.indexOf("["+ Currency + "]")  //Currency.length() + 1
-                                , s.indexOf("[/"+ Currency + "]")
-                        )
-                //"["+ Currency + "]" + Saldo + "[/"+ Currency + "]"
-                ,"["+ Currency + "]" + Saldo// + "[/"+ Currency + "]"
-        ));
+//        String s = "[RUB]200[/RUB]";
+//        String Currency = "RUB";
+//        int Saldo = 8888;
+//        System.out.println(s);
+//        s =
+//                s.replace(
+//                        s.substring
+//                                (s.indexOf("["+ Currency + "]")  //Currency.length() + 1
+//                                        , s.indexOf("[/"+ Currency + "]")
+//                                )
+//                        //"["+ Currency + "]" + Saldo + "[/"+ Currency + "]"
+//                        ,"["+ Currency + "]" + Saldo// + "[/"+ Currency + "]"
+//                );
+//        System.out.println(s);
+//        System.out.println("["+ Currency + "]" + Saldo);
+//        System.out.println(s.substring
+//                (s.indexOf("["+ Currency + "]")  //Currency.length() + 1
+//                        , s.indexOf("[/"+ Currency + "]")
+//                ));
+//        System.out.println(s.indexOf("["+ Currency + "]"));
+//        System.out.println(s.indexOf("[/"+ Currency + "]"));
+//        System.out.println(                s.replace(
+//                s.substring
+//                        (s.indexOf("["+ Currency + "]")  //Currency.length() + 1
+//                                , s.indexOf("[/"+ Currency + "]")
+//                        )
+//                //"["+ Currency + "]" + Saldo + "[/"+ Currency + "]"
+//                ,"["+ Currency + "]" + Saldo// + "[/"+ Currency + "]"
+//        ));
+//
+//        System.out.println(                s.replace(
+//                        "[RUB]200"
+//                ,       "[RUB]8888"
+//        ));
         // Press Shift+F10 or click the green arrow button in the gutter to run the code.
 //        for (int i = 1; i <= 5; i++) {
 //

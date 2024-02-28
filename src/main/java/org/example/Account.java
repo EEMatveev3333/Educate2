@@ -52,7 +52,7 @@ public class Account {
 
         if (this.currencySaldoTextList.contains("["+ Currency + "]"))
             this.currencySaldoTextList =
-                    this.currencySaldoTextList.replaceAll(
+                    this.currencySaldoTextList.replace(
                             this.currencySaldoTextList.substring
                                     (this.currencySaldoTextList.indexOf("["+ Currency + "]")  //Currency.length() + 1
                                             , this.currencySaldoTextList.indexOf("[/"+ Currency + "]")

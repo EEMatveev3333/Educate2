@@ -9,12 +9,22 @@ public class Account {
     // Количество валюты хранится в виде целочисленного значения.
     // Валюта должна быть представлена таким образом, чтобы указать можно было только значение из некоторого фиксированного списка значений
     // (конкретный перечень допустимо указать произвольно в коде).
-    private String currencySaldoTextList = "RUB-0;USD-0;EUR-0";
+    private String currencySaldoTextList = "";//"[RUB]{0};[USD]{0};[EUR]{0}";
     //-------------------------------------------------------------------
 
     //3. Создание объекта Account возможно только с указанием имени владельца счета.
-    public Account(String ownerName) {
-        this.ownerName = ownerName;
+    public Account(String ownerName) throws NullPointerException  {
+        //Также необходимо реализовать следующие ограничения:
+        //        — Имя не может быть null или пустым
+        //В случае нарушения ограничений необходимо бросать подходящее исключение.
+        if (ownerName != null && !ownerName.trim().isEmpty()) {
+            // Обработка строки
+            this.ownerName = ownerName;
+        }
+        else
+            throw new NullPointerException("ownerName cannot be null or empty");
+
+
     }
     //-------------------------------------------------------------------
 
@@ -35,17 +45,30 @@ public class Account {
     //-------------------------------------------------------------------
 
     //6. Необходим метод, который принимает Валюту и её количество и заменяет текущее количество данной Валюты на указанное. Если такой валюты ранее не было – она добавляется в список.
-    public void setCurrencySaldoPair(String CurrencySaldoPair) {
-        this.ownerName = ownerName;
+    public void setCurrencySaldoPair(String Currency, int Saldo) throws IllegalArgumentException   {
+        //this.ownerName = ownerName;
+        if (Saldo < 0)
+            throw new IllegalArgumentException("Saldo cannot be negative");
+
+        if (this.currencySaldoTextList.contains("["+ Currency + "]"))
+            this.currencySaldoTextList =
+                    this.currencySaldoTextList.replaceAll(
+                            this.currencySaldoTextList.substring
+                                    (this.currencySaldoTextList.indexOf("["+ Currency + "]")  //Currency.length() + 1
+                                            , this.currencySaldoTextList.indexOf("[/"+ Currency + "]")
+                                    )
+                            //"["+ Currency + "]" + Saldo + "[/"+ Currency + "]"
+                            ,"["+ Currency + "]" + Saldo// + "[/"+ Currency + "]"
+                    );
+        else
+            this.currencySaldoTextList = this.currencySaldoTextList + "["+ Currency + "]" + Saldo + "[/"+ Currency + "]";
     }
 
-    //Также необходимо реализовать следующие ограничения:
 
-    //        — Имя не может быть null или пустым
 
     //        — Количество валюты не может быть отрицательным
 
-    //В случае нарушения ограничений необходимо бросать подходящее исключение.
+
 
     //Необходимо реализовать и приложить модульные тесты, проверяющие выполнение обозначенных требований.
 

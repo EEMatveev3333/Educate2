@@ -14,7 +14,50 @@ public class Main {
         Account acc3 = new Account("Sidorov Sidor Sidorovich");
         System.out.println(acc3);
 
+        System.out.println("Hello and welcome!");
 
+        acc1.setCurrencySaldoPair("RUB",100);
+        acc1.setCurrencySaldoPair("USD",100);
+        acc1.setCurrencySaldoPair("EUR",100);
+        System.out.println(acc1);
+        acc2.setCurrencySaldoPair("RUB",200);
+        System.out.println(acc2);
+        acc2.setCurrencySaldoPair("RUB",300);
+        System.out.println(acc2);
+        acc2.setCurrencySaldoPair("RUB",8888);
+        System.out.println(acc2);
+        acc3.setCurrencySaldoPair("RUB",300);
+        System.out.println(acc3);
+
+        String s = "[RUB]200[/RUB]";
+        String Currency = "RUB";
+        int Saldo = 8888;
+        System.out.println(s);
+        s =
+                s.replaceAll(
+                        s.substring
+                                (s.indexOf("["+ Currency + "]")  //Currency.length() + 1
+                                        , s.indexOf("[/"+ Currency + "]")
+                                )
+                        //"["+ Currency + "]" + Saldo + "[/"+ Currency + "]"
+                        ,"["+ Currency + "]" + Saldo// + "[/"+ Currency + "]"
+                );
+        System.out.println(s);
+        System.out.println("["+ Currency + "]" + Saldo);
+        System.out.println(s.substring
+                (s.indexOf("["+ Currency + "]")  //Currency.length() + 1
+                        , s.indexOf("[/"+ Currency + "]")
+                ));
+        System.out.println(s.indexOf("["+ Currency + "]"));
+        System.out.println(s.indexOf("[/"+ Currency + "]"));
+        System.out.println(                s.replaceAll(
+                s.substring
+                        (s.indexOf("["+ Currency + "]")  //Currency.length() + 1
+                                , s.indexOf("[/"+ Currency + "]")
+                        )
+                //"["+ Currency + "]" + Saldo + "[/"+ Currency + "]"
+                ,"["+ Currency + "]" + Saldo// + "[/"+ Currency + "]"
+        ));
         // Press Shift+F10 or click the green arrow button in the gutter to run the code.
 //        for (int i = 1; i <= 5; i++) {
 //

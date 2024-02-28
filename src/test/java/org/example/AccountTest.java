@@ -1,14 +1,28 @@
 package org.example;
 
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class AccountTest {
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getOwnerName() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void setOwnerName() {
+    }
+
+    @Test
+    void getCurrencySaldoTextList() {
+    }
+
+    @Test
+    void setCurrencySaldoPair() {
+    }
+
+    @Test
+    void testToString() {
     }
 }
